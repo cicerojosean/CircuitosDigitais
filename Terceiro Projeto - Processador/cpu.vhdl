@@ -65,90 +65,92 @@ begin
 
   process(rst, clk, cpu_out)
   begin
-
-    if(clk'event and clk='0') then
-    output <= cpu_out;
+		if (rst='1') then
+			hex4 <= "1000000";
+		
+		elsif(clk'event and clk='0') then
+			--output <= cpu_out;
 	 
-    -- this acts like a BCD to 7-segment decoder,
-    -- can see output in waveforms as cpu_out
-       case cpu_out is
-         when "0000" =>
-				hex4 <= "1000000";
-         when "0001" =>
-           hex4 <= "1111001";
-         when "0010" =>
-				hex4 <= "0100100";
-         when "0011" =>
-				hex4 <= "0110000";
-         when "0100" =>
-				hex4 <= "0011001";
-         when "0101" =>
-				hex4 <= "0010010";
-         when "0110" =>
-				hex4 <= "0000010";
-         when "0111" =>
-				hex4 <= "1111000";
-         when "1000" =>
-				hex4 <= "0000000";
-         when "1001" =>
-				hex4 <= "0100000";
-         when others =>
-       end case;
-		 
-		 case estado is
-         when "0000" =>
-				hex3 <= "1000000";
-				hex2 <= "1000000";
-				hex1 <= "1000000";
-				hex0 <= "1000000";
-         when "0001" =>
-				hex3 <= "1000000";
-				hex2 <= "1000000";
-				hex1 <= "1000000";
-			   hex0 <= "1111001";
-         when "0010" =>
-				hex3 <= "1000000";
-				hex2 <= "1000000";
-				hex1 <= "1111001";
-				hex0 <= "1000000";
-         when "0011" =>
-				hex3 <= "1000000";
-				hex2 <= "1000000";
-				hex1 <= "1111001";
-				hex0 <= "1111001";
-			when "0100" =>
-				hex3 <= "1000000";
-				hex2 <= "1111001";
-				hex1 <= "1000000";
-				hex0 <= "1000000";
-         when "0101" =>
-				hex3 <= "1000000";
-				hex2 <= "1111001";
-				hex1 <= "1000000";
-				hex0 <= "1111001";
-         when "0110" =>
-				hex3 <= "1000000";
-				hex2 <= "1111001";
-				hex1 <= "1111001";
-				hex0 <= "1000000";
-         when "0111" =>
-				hex3 <= "1000000";
-				hex2 <= "1111001";
-				hex1 <= "1111001";
-				hex0 <= "1111001";
-         when "1000" =>
-				hex3 <= "1111001";
-				hex2 <= "1000000";
-				hex1 <= "1000000";
-				hex0 <= "1000000";
-         when "1001" =>
-				hex3 <= "1111001";
-				hex2 <= "1000000";
-				hex1 <= "1000000";
-				hex0 <= "1111001";
-         when others =>
-       end case;
-		 
+			-- this acts like a BCD to 7-segment decoder,
+			-- can see output in waveforms as cpu_out
+			case cpu_out is
+				when "0000" =>
+					hex4 <= "1000000";
+				when "0001" =>
+				  hex4 <= "1111001";
+				when "0010" =>
+					hex4 <= "0100100";
+				when "0011" =>
+					hex4 <= "0110000";
+				when "0100" =>
+					hex4 <= "0011001";
+				when "0101" =>
+					hex4 <= "0010010";
+				when "0110" =>
+					hex4 <= "0000010";
+				when "0111" =>
+					hex4 <= "1111000";
+				when "1000" =>
+					hex4 <= "0000000";
+				when "1001" =>
+					hex4 <= "0100000";
+				when others =>
+			 end case;
+			 
+			 case estado is
+				when "0000" =>
+					hex3 <= "1000000";
+					hex2 <= "1000000";
+					hex1 <= "1000000";
+					hex0 <= "1000000";
+				when "0001" =>
+					hex3 <= "1000000";
+					hex2 <= "1000000";
+					hex1 <= "1000000";
+					hex0 <= "1111001";
+				when "0010" =>
+					hex3 <= "1000000";
+					hex2 <= "1000000";
+					hex1 <= "1111001";
+					hex0 <= "1000000";
+				when "0011" =>
+					hex3 <= "1000000";
+					hex2 <= "1000000";
+					hex1 <= "1111001";
+					hex0 <= "1111001";
+				when "0100" =>
+					hex3 <= "1000000";
+					hex2 <= "1111001";
+					hex1 <= "1000000";
+					hex0 <= "1000000";
+				when "0101" =>
+					hex3 <= "1000000";
+					hex2 <= "1111001";
+					hex1 <= "1000000";
+					hex0 <= "1111001";
+				when "0110" =>
+					hex3 <= "1000000";
+					hex2 <= "1111001";
+					hex1 <= "1111001";
+					hex0 <= "1000000";
+				when "0111" =>
+					hex3 <= "1000000";
+					hex2 <= "1111001";
+					hex1 <= "1111001";
+					hex0 <= "1111001";
+				when "1000" =>
+					hex3 <= "1111001";
+					hex2 <= "1000000";
+					hex1 <= "1000000";
+					hex0 <= "1000000";
+				when "1001" =>
+					hex3 <= "1111001";
+					hex2 <= "1000000";
+					hex1 <= "1000000";
+					hex0 <= "1111001";
+				when others =>
+			 end case;
+			 
     end if;
   end process;							
 

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for processador
-Thu Jun 28 15:49:07 2018
+Thu Jun 28 16:47:34 2018
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -14,11 +14,14 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. State Machine - |cpu|ctrl:controller|state
-  9. Registers Removed During Synthesis
- 10. Removed Registers Triggering Further Register Optimizations
- 11. General Register Statistics
- 12. Elapsed Time Per Partition
- 13. Analysis & Synthesis Messages
+  9. User-Specified and Inferred Latches
+ 10. Registers Removed During Synthesis
+ 11. Removed Registers Triggering Further Register Optimizations
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Elapsed Time Per Partition
+ 16. Analysis & Synthesis Messages
 
 
 
@@ -44,15 +47,15 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Jun 28 15:49:07 2018           ;
+; Analysis & Synthesis Status        ; Successful - Thu Jun 28 16:47:34 2018           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; processador                                     ;
 ; Top-level Entity Name              ; cpu                                             ;
 ; Family                             ; Cyclone II                                      ;
-; Total logic elements               ; 18                                              ;
-;     Total combinational functions  ; 17                                              ;
-;     Dedicated logic registers      ; 12                                              ;
-; Total registers                    ; 12                                              ;
+; Total logic elements               ; 39                                              ;
+;     Total combinational functions  ; 35                                              ;
+;     Dedicated logic registers      ; 29                                              ;
+; Total registers                    ; 29                                              ;
 ; Total pins                         ; 42                                              ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
@@ -173,39 +176,42 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+-------+
 ; Resource                                    ; Usage ;
 +---------------------------------------------+-------+
-; Estimated Total logic elements              ; 18    ;
+; Estimated Total logic elements              ; 39    ;
 ;                                             ;       ;
-; Total combinational functions               ; 17    ;
+; Total combinational functions               ; 35    ;
 ; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 7     ;
-;     -- 3 input functions                    ; 6     ;
-;     -- <=2 input functions                  ; 4     ;
+;     -- 4 input functions                    ; 19    ;
+;     -- 3 input functions                    ; 9     ;
+;     -- <=2 input functions                  ; 7     ;
 ;                                             ;       ;
 ; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 16    ;
+;     -- normal mode                          ; 34    ;
 ;     -- arithmetic mode                      ; 1     ;
 ;                                             ;       ;
-; Total registers                             ; 12    ;
-;     -- Dedicated logic registers            ; 12    ;
+; Total registers                             ; 29    ;
+;     -- Dedicated logic registers            ; 29    ;
 ;     -- I/O registers                        ; 0     ;
 ;                                             ;       ;
 ; I/O pins                                    ; 42    ;
 ; Embedded Multiplier 9-bit elements          ; 0     ;
-; Maximum fan-out node                        ; clk   ;
-; Maximum fan-out                             ; 12    ;
-; Total fan-out                               ; 98    ;
-; Average fan-out                             ; 1.38  ;
+; Maximum fan-out node                        ; rst   ;
+; Maximum fan-out                             ; 30    ;
+; Total fan-out                               ; 232   ;
+; Average fan-out                             ; 2.19  ;
 +---------------------------------------------+-------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                          ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------+--------------+
-; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name  ; Library Name ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------+--------------+
-; |cpu                       ; 17 (2)            ; 12 (2)       ; 0           ; 0            ; 0       ; 0         ; 42   ; 0            ; |cpu                 ; work         ;
-;    |ctrl:controller|       ; 15 (15)           ; 10 (10)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|ctrl:controller ; work         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------+--------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                             ;
++------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------+--------------+
+; Compilation Hierarchy Node   ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                   ; Library Name ;
++------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------+--------------+
+; |cpu                         ; 35 (11)           ; 29 (9)       ; 0           ; 0            ; 0       ; 0         ; 42   ; 0            ; |cpu                                  ; work         ;
+;    |ctrl:controller|         ; 20 (20)           ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|ctrl:controller                  ; work         ;
+;    |dp:datapath|             ; 4 (0)             ; 4 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|dp:datapath                      ; work         ;
+;       |acc:acumulador_atual| ; 0 (0)             ; 4 (4)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|dp:datapath|acc:acumulador_atual ; work         ;
+;       |alu:alu1|             ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|dp:datapath|alu:alu1             ; work         ;
++------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -225,83 +231,87 @@ Encoding Type:  One-Hot
 +------------+------------+----------+----------+----------+----------+----------+----------+
 
 
-+--------------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                     ;
-+-----------------------------------------------+--------------------------------------------------------+
-; Register name                                 ; Reason for Removal                                     ;
-+-----------------------------------------------+--------------------------------------------------------+
-; ctrl:controller|OPCODE[2]                     ; Stuck at GND due to stuck port data_in                 ;
-; dp:datapath|acc:acumulador_atual|temp[0..3]   ; Merged with dp:datapath|acc:acumulador_atual|output[2] ;
-; hex0[3]~reg0                                  ; Merged with hex0[0]~reg0                               ;
-; hex0[4]~reg0                                  ; Merged with hex0[0]~reg0                               ;
-; hex0[5]~reg0                                  ; Merged with hex0[0]~reg0                               ;
-; hex0[2]~reg0                                  ; Merged with hex0[1]~reg0                               ;
-; hex1[1]~reg0                                  ; Merged with hex0[1]~reg0                               ;
-; hex1[2]~reg0                                  ; Merged with hex0[1]~reg0                               ;
-; hex2[1]~reg0                                  ; Merged with hex0[1]~reg0                               ;
-; hex2[2]~reg0                                  ; Merged with hex0[1]~reg0                               ;
-; hex3[1]~reg0                                  ; Merged with hex0[1]~reg0                               ;
-; hex3[2]~reg0                                  ; Merged with hex0[1]~reg0                               ;
-; hex1[6]~reg0                                  ; Merged with hex0[6]~reg0                               ;
-; hex2[6]~reg0                                  ; Merged with hex0[6]~reg0                               ;
-; hex3[6]~reg0                                  ; Merged with hex0[6]~reg0                               ;
-; hex1[3]~reg0                                  ; Merged with hex1[0]~reg0                               ;
-; hex1[4]~reg0                                  ; Merged with hex1[0]~reg0                               ;
-; hex1[5]~reg0                                  ; Merged with hex1[0]~reg0                               ;
-; hex3[3]~reg0                                  ; Merged with hex3[0]~reg0                               ;
-; hex3[4]~reg0                                  ; Merged with hex3[0]~reg0                               ;
-; hex3[5]~reg0                                  ; Merged with hex3[0]~reg0                               ;
-; dp:datapath|acc:acumulador_atual|output[1..3] ; Merged with dp:datapath|acc:acumulador_atual|output[0] ;
-; ctrl:controller|estado_atual[3]               ; Merged with ctrl:controller|estado_atual[0]            ;
-; ctrl:controller|OPCODE[3]                     ; Merged with ctrl:controller|OPCODE[0]                  ;
-; hex2[3]~reg0                                  ; Merged with hex2[0]~reg0                               ;
-; hex2[4]~reg0                                  ; Merged with hex2[0]~reg0                               ;
-; hex2[5]~reg0                                  ; Merged with hex2[0]~reg0                               ;
-; dp:datapath|acc:acumulador_atual|output[0]    ; Stuck at GND due to stuck port data_in                 ;
-; hex4[0]~reg0                                  ; Stuck at GND due to stuck port data_in                 ;
-; hex4[1]~reg0                                  ; Stuck at GND due to stuck port data_in                 ;
-; hex4[2]~reg0                                  ; Stuck at GND due to stuck port data_in                 ;
-; hex4[3]~reg0                                  ; Stuck at GND due to stuck port data_in                 ;
-; hex4[4]~reg0                                  ; Stuck at GND due to stuck port data_in                 ;
-; hex4[5]~reg0                                  ; Stuck at GND due to stuck port data_in                 ;
-; hex4[6]~reg0                                  ; Stuck at VCC due to stuck port data_in                 ;
-; output[0]~reg0                                ; Stuck at GND due to stuck port data_in                 ;
-; output[1]~reg0                                ; Stuck at GND due to stuck port data_in                 ;
-; output[2]~reg0                                ; Stuck at GND due to stuck port data_in                 ;
-; output[3]~reg0                                ; Stuck at GND due to stuck port data_in                 ;
-; ctrl:controller|estado_atual[2]               ; Stuck at GND due to stuck port data_in                 ;
-; hex0[1]~reg0                                  ; Stuck at GND due to stuck port data_in                 ;
-; hex2[0]~reg0                                  ; Stuck at GND due to stuck port data_in                 ;
-; hex3[0]~reg0                                  ; Merged with hex0[0]~reg0                               ;
-; ctrl:controller|OPCODE[0]                     ; Merged with ctrl:controller|OPCODE[1]                  ;
-; hex0[6]~reg0                                  ; Stuck at VCC due to stuck port data_in                 ;
-; ctrl:controller|state.s5                      ; Merged with ctrl:controller|state.s4                   ;
-; ctrl:controller|state.s4                      ; Stuck at GND due to stuck port data_in                 ;
-; ctrl:controller|PC[2..31]                     ; Lost fanout                                            ;
-; Total Number of Removed Registers = 82        ;                                                        ;
-+-----------------------------------------------+--------------------------------------------------------+
++---------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                               ;
++----------------------------------------------------+---------------------+------------------------+
+; Latch Name                                         ; Latch Enable Signal ; Free of Timing Hazards ;
++----------------------------------------------------+---------------------+------------------------+
+; dp:datapath|alu:alu1|output[3]                     ; Mux27               ; yes                    ;
+; dp:datapath|alu:alu1|output[1]                     ; Mux27               ; yes                    ;
+; dp:datapath|alu:alu1|output[2]                     ; Mux27               ; yes                    ;
+; dp:datapath|alu:alu1|output[0]                     ; Mux27               ; yes                    ;
+; Number of user-specified and inferred latches = 4  ;                     ;                        ;
++----------------------------------------------------+---------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                                                  ;
-+--------------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
-; Register name                              ; Reason for Removal        ; Registers Removed due to This Register                                              ;
-+--------------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
-; ctrl:controller|PC[31]                     ; Lost Fanouts              ; ctrl:controller|PC[30], ctrl:controller|PC[29], ctrl:controller|PC[28],             ;
-;                                            ;                           ; ctrl:controller|PC[27], ctrl:controller|PC[26], ctrl:controller|PC[25],             ;
-;                                            ;                           ; ctrl:controller|PC[24], ctrl:controller|PC[23], ctrl:controller|PC[22],             ;
-;                                            ;                           ; ctrl:controller|PC[21], ctrl:controller|PC[20], ctrl:controller|PC[19],             ;
-;                                            ;                           ; ctrl:controller|PC[18], ctrl:controller|PC[17], ctrl:controller|PC[16],             ;
-;                                            ;                           ; ctrl:controller|PC[15], ctrl:controller|PC[14], ctrl:controller|PC[13],             ;
-;                                            ;                           ; ctrl:controller|PC[12], ctrl:controller|PC[11], ctrl:controller|PC[10],             ;
-;                                            ;                           ; ctrl:controller|PC[9], ctrl:controller|PC[8], ctrl:controller|PC[7],                ;
-;                                            ;                           ; ctrl:controller|PC[6], ctrl:controller|PC[5], ctrl:controller|PC[4],                ;
-;                                            ;                           ; ctrl:controller|PC[3], ctrl:controller|PC[2]                                        ;
-; dp:datapath|acc:acumulador_atual|output[0] ; Stuck at GND              ; hex4[0]~reg0, hex4[1]~reg0, hex4[2]~reg0, hex4[3]~reg0, hex4[4]~reg0, hex4[5]~reg0, ;
-;                                            ; due to stuck port data_in ; hex4[6]~reg0, output[0]~reg0, output[1]~reg0, output[2]~reg0, output[3]~reg0        ;
-; ctrl:controller|OPCODE[2]                  ; Stuck at GND              ; ctrl:controller|estado_atual[2], hex0[1]~reg0, hex2[0]~reg0, hex0[6]~reg0           ;
-;                                            ; due to stuck port data_in ;                                                                                     ;
-+--------------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                ;
++------------------------------------------+--------------------------------------------------------+
+; Register name                            ; Reason for Removal                                     ;
++------------------------------------------+--------------------------------------------------------+
+; ctrl:controller|OPCODE[2]                ; Stuck at GND due to stuck port data_in                 ;
+; ctrl:controller|ADDRESS[2]               ; Stuck at VCC due to stuck port data_in                 ;
+; dp:datapath|acc:acumulador_atual|temp[3] ; Merged with dp:datapath|acc:acumulador_atual|output[3] ;
+; dp:datapath|acc:acumulador_atual|temp[2] ; Merged with dp:datapath|acc:acumulador_atual|output[2] ;
+; dp:datapath|acc:acumulador_atual|temp[1] ; Merged with dp:datapath|acc:acumulador_atual|output[1] ;
+; dp:datapath|acc:acumulador_atual|temp[0] ; Merged with dp:datapath|acc:acumulador_atual|output[0] ;
+; hex1[6]~reg0                             ; Merged with hex0[6]~reg0                               ;
+; hex2[6]~reg0                             ; Merged with hex0[6]~reg0                               ;
+; hex3[6]~reg0                             ; Merged with hex0[6]~reg0                               ;
+; hex3[3]~reg0                             ; Merged with hex3[0]~reg0                               ;
+; hex3[4]~reg0                             ; Merged with hex3[0]~reg0                               ;
+; hex3[5]~reg0                             ; Merged with hex3[0]~reg0                               ;
+; hex0[2]~reg0                             ; Merged with hex0[1]~reg0                               ;
+; hex1[1]~reg0                             ; Merged with hex0[1]~reg0                               ;
+; hex1[2]~reg0                             ; Merged with hex0[1]~reg0                               ;
+; hex2[1]~reg0                             ; Merged with hex0[1]~reg0                               ;
+; hex2[2]~reg0                             ; Merged with hex0[1]~reg0                               ;
+; hex3[1]~reg0                             ; Merged with hex0[1]~reg0                               ;
+; hex3[2]~reg0                             ; Merged with hex0[1]~reg0                               ;
+; hex2[3]~reg0                             ; Merged with hex2[0]~reg0                               ;
+; hex2[4]~reg0                             ; Merged with hex2[0]~reg0                               ;
+; hex2[5]~reg0                             ; Merged with hex2[0]~reg0                               ;
+; hex0[3]~reg0                             ; Merged with hex0[0]~reg0                               ;
+; hex0[4]~reg0                             ; Merged with hex0[0]~reg0                               ;
+; hex0[5]~reg0                             ; Merged with hex0[0]~reg0                               ;
+; ctrl:controller|estado_atual[3]          ; Merged with ctrl:controller|estado_atual[0]            ;
+; ctrl:controller|OPCODE[0,3]              ; Merged with ctrl:controller|ADDRESS[3]                 ;
+; hex1[3]~reg0                             ; Merged with hex1[0]~reg0                               ;
+; hex1[4]~reg0                             ; Merged with hex1[0]~reg0                               ;
+; hex1[5]~reg0                             ; Merged with hex1[0]~reg0                               ;
+; ctrl:controller|estado_atual[2]          ; Stuck at GND due to stuck port data_in                 ;
+; hex2[0]~reg0                             ; Stuck at GND due to stuck port data_in                 ;
+; hex0[1]~reg0                             ; Stuck at GND due to stuck port data_in                 ;
+; hex0[0]~reg0                             ; Merged with hex3[0]~reg0                               ;
+; ctrl:controller|ADDRESS[3]               ; Merged with ctrl:controller|OPCODE[1]                  ;
+; ctrl:controller|imm[2]                   ; Merged with ctrl:controller|enable                     ;
+; hex0[6]~reg0                             ; Stuck at VCC due to stuck port data_in                 ;
+; ctrl:controller|state.s5                 ; Merged with ctrl:controller|state.s4                   ;
+; ctrl:controller|state.s4                 ; Stuck at GND due to stuck port data_in                 ;
+; ctrl:controller|PC[2..31]                ; Lost fanout                                            ;
+; Total Number of Removed Registers = 70   ;                                                        ;
++------------------------------------------+--------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                       ;
++---------------------------+---------------------------+---------------------------------------------------------------------------+
+; Register name             ; Reason for Removal        ; Registers Removed due to This Register                                    ;
++---------------------------+---------------------------+---------------------------------------------------------------------------+
+; ctrl:controller|PC[31]    ; Lost Fanouts              ; ctrl:controller|PC[30], ctrl:controller|PC[29], ctrl:controller|PC[28],   ;
+;                           ;                           ; ctrl:controller|PC[27], ctrl:controller|PC[26], ctrl:controller|PC[25],   ;
+;                           ;                           ; ctrl:controller|PC[24], ctrl:controller|PC[23], ctrl:controller|PC[22],   ;
+;                           ;                           ; ctrl:controller|PC[21], ctrl:controller|PC[20], ctrl:controller|PC[19],   ;
+;                           ;                           ; ctrl:controller|PC[18], ctrl:controller|PC[17], ctrl:controller|PC[16],   ;
+;                           ;                           ; ctrl:controller|PC[15], ctrl:controller|PC[14], ctrl:controller|PC[13],   ;
+;                           ;                           ; ctrl:controller|PC[12], ctrl:controller|PC[11], ctrl:controller|PC[10],   ;
+;                           ;                           ; ctrl:controller|PC[9], ctrl:controller|PC[8], ctrl:controller|PC[7],      ;
+;                           ;                           ; ctrl:controller|PC[6], ctrl:controller|PC[5], ctrl:controller|PC[4],      ;
+;                           ;                           ; ctrl:controller|PC[3], ctrl:controller|PC[2]                              ;
+; ctrl:controller|OPCODE[2] ; Stuck at GND              ; ctrl:controller|estado_atual[2], hex2[0]~reg0, hex0[1]~reg0, hex0[6]~reg0 ;
+;                           ; due to stuck port data_in ;                                                                           ;
++---------------------------+---------------------------+---------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -309,14 +319,35 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 12    ;
+; Total registers                              ; 29    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 7     ;
+; Number of registers using Asynchronous Clear ; 18    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 2     ;
+; Number of registers using Clock Enable       ; 21    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; hex4[6]~reg0                           ; 2       ;
+; Total number of inverted registers = 1 ;         ;
++----------------------------------------+---------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------+
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |cpu|hex3[0]~reg0              ;
+; 16:1               ; 6 bits    ; 60 LEs        ; 36 LEs               ; 24 LEs                 ; Yes        ; |cpu|hex4[0]~reg0              ;
+; 1:1                ; 4 bits    ; 0 LEs         ; 0 LEs                ; 0 LEs                  ; No         ; |cpu|dp:datapath|alu:alu1|Mux1 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------+
 
 
 +-------------------------------+
@@ -334,7 +365,7 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Thu Jun 28 15:49:05 2018
+    Info: Processing started: Thu Jun 28 16:47:32 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off processador -c processador
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 8 design units, including 4 entities, in source file dp.vhdl
@@ -353,15 +384,20 @@ Info (12021): Found 2 design units, including 1 entities, in source file cpu.vhd
     Info (12022): Found design unit 1: cpu-struc
     Info (12023): Found entity 1: cpu
 Info (12127): Elaborating entity "cpu" for the top level hierarchy
+Warning (10541): VHDL Signal Declaration warning at cpu.vhdl(11): used implicit default value for signal "output" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Info (12128): Elaborating entity "ctrl" for hierarchy "ctrl:controller"
 Info (12128): Elaborating entity "dp" for hierarchy "dp:datapath"
 Info (12128): Elaborating entity "alu" for hierarchy "dp:datapath|alu:alu1"
+Warning (10492): VHDL Process Statement warning at dp.vhdl(23): signal "opcode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at dp.vhdl(25): signal "imm" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10631): VHDL Process Statement warning at dp.vhdl(18): inferring latch(es) for signal or variable "output", which holds its previous value in one or more paths through the process
 Info (10041): Inferred latch for "output[0]" at dp.vhdl(18)
 Info (10041): Inferred latch for "output[1]" at dp.vhdl(18)
 Info (10041): Inferred latch for "output[2]" at dp.vhdl(18)
 Info (10041): Inferred latch for "output[3]" at dp.vhdl(18)
 Info (12128): Elaborating entity "acc" for hierarchy "dp:datapath|acc:acumulador_atual"
+Info (13000): Registers with preset signals will power-up high
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "output[0]" is stuck at GND
     Warning (13410): Pin "output[1]" is stuck at GND
@@ -383,25 +419,18 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "hex3[1]" is stuck at GND
     Warning (13410): Pin "hex3[2]" is stuck at GND
     Warning (13410): Pin "hex3[6]" is stuck at VCC
-    Warning (13410): Pin "hex4[0]" is stuck at GND
-    Warning (13410): Pin "hex4[1]" is stuck at GND
-    Warning (13410): Pin "hex4[2]" is stuck at GND
-    Warning (13410): Pin "hex4[3]" is stuck at GND
-    Warning (13410): Pin "hex4[4]" is stuck at GND
-    Warning (13410): Pin "hex4[5]" is stuck at GND
-    Warning (13410): Pin "hex4[6]" is stuck at VCC
 Critical Warning (18061): Ignored Power-Up Level option on the following registers
     Critical Warning (18010): Register ctrl:controller|PC[0] will power up to Low
 Info (17049): 30 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 60 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 86 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
     Info (21059): Implemented 39 output pins
-    Info (21061): Implemented 18 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 32 warnings
-    Info: Peak virtual memory: 626 megabytes
-    Info: Processing ended: Thu Jun 28 15:49:07 2018
+    Info (21061): Implemented 44 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 28 warnings
+    Info: Peak virtual memory: 634 megabytes
+    Info: Processing ended: Thu Jun 28 16:47:34 2018
     Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:02
 

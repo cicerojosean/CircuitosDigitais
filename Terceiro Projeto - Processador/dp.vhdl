@@ -20,14 +20,14 @@ begin
 			if (rst ='1') then
 				output<="0000";
 			else
-				--case OPCode is
-			--		when "0010" =>
-			--			output <= imm;
-			--		when "0001" =>
-			--			output <= temp;
-			--	when others =>
-			--	
-			--	end case;
+				case OPCode is
+					when "0010" =>
+						output <= imm;
+					when "0001" =>
+						
+				when others =>
+				
+				end case;
 			end if;
 	end process;
 
