@@ -1,5 +1,5 @@
 Analysis & Synthesis report for processador
-Thu Jun 28 15:28:50 2018
+Thu Jun 28 15:49:07 2018
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -44,7 +44,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Jun 28 15:28:50 2018           ;
+; Analysis & Synthesis Status        ; Successful - Thu Jun 28 15:49:07 2018           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; processador                                     ;
 ; Top-level Entity Name              ; cpu                                             ;
@@ -334,7 +334,7 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Thu Jun 28 15:28:48 2018
+    Info: Processing started: Thu Jun 28 15:49:05 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off processador -c processador
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 8 design units, including 4 entities, in source file dp.vhdl
@@ -400,8 +400,8 @@ Info (21057): Implemented 60 device resources after synthesis - the final resour
     Info (21059): Implemented 39 output pins
     Info (21061): Implemented 18 logic cells
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 32 warnings
-    Info: Peak virtual memory: 640 megabytes
-    Info: Processing ended: Thu Jun 28 15:28:50 2018
+    Info: Peak virtual memory: 626 megabytes
+    Info: Processing ended: Thu Jun 28 15:49:07 2018
     Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:02
 

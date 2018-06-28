@@ -1,5 +1,5 @@
 Fitter report for processador
-Thu Jun 28 15:07:12 2018
+Thu Jun 28 15:49:17 2018
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -64,17 +64,17 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Fitter Summary                                                                       ;
 +------------------------------------+-------------------------------------------------+
-; Fitter Status                      ; Successful - Thu Jun 28 15:07:12 2018           ;
+; Fitter Status                      ; Successful - Thu Jun 28 15:49:17 2018           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; processador                                     ;
 ; Top-level Entity Name              ; cpu                                             ;
 ; Family                             ; Cyclone II                                      ;
 ; Device                             ; EP2C35F672C6                                    ;
 ; Timing Models                      ; Final                                           ;
-; Total logic elements               ; 42 / 33,216 ( < 1 % )                           ;
-;     Total combinational functions  ; 35 / 33,216 ( < 1 % )                           ;
-;     Dedicated logic registers      ; 33 / 33,216 ( < 1 % )                           ;
-; Total registers                    ; 33                                              ;
+; Total logic elements               ; 18 / 33,216 ( < 1 % )                           ;
+;     Total combinational functions  ; 17 / 33,216 ( < 1 % )                           ;
+;     Dedicated logic registers      ; 12 / 33,216 ( < 1 % )                           ;
+; Total registers                    ; 12                                              ;
 ; Total pins                         ; 42 / 475 ( 9 % )                                ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0 / 483,840 ( 0 % )                             ;
@@ -151,8 +151,8 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; Type                ; Value                  ;
 +---------------------+------------------------+
 ; Placement (by node) ;                        ;
-;     -- Requested    ; 0 / 116 ( 0.00 % )     ;
-;     -- Achieved     ; 0 / 116 ( 0.00 % )     ;
+;     -- Requested    ; 0 / 76 ( 0.00 % )      ;
+;     -- Achieved     ; 0 / 76 ( 0.00 % )      ;
 ;                     ;                        ;
 ; Routing (by net)    ;                        ;
 ;     -- Requested    ; 0 / 0 ( 0.00 % )       ;
@@ -175,7 +175,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +--------------------------------+---------+-------------------+-------------------------+-------------------+
 ; Partition Name                 ; # Nodes ; # Preserved Nodes ; Preservation Level Used ; Netlist Type Used ;
 +--------------------------------+---------+-------------------+-------------------------+-------------------+
-; Top                            ; 113     ; 0                 ; N/A                     ; Source File       ;
+; Top                            ; 73      ; 0                 ; N/A                     ; Source File       ;
 ; hard_block:auto_generated_inst ; 3       ; 0                 ; N/A                     ; Source File       ;
 +--------------------------------+---------+-------------------+-------------------------+-------------------+
 
@@ -191,23 +191,23 @@ The pin-out file can be found in /home/cicero/Dropbox/CeT 2018.1/Sistemas Digita
 +---------------------------------------------+-----------------------+
 ; Resource                                    ; Usage                 ;
 +---------------------------------------------+-----------------------+
-; Total logic elements                        ; 42 / 33,216 ( < 1 % ) ;
-;     -- Combinational with no register       ; 9                     ;
-;     -- Register only                        ; 7                     ;
-;     -- Combinational with a register        ; 26                    ;
+; Total logic elements                        ; 18 / 33,216 ( < 1 % ) ;
+;     -- Combinational with no register       ; 6                     ;
+;     -- Register only                        ; 1                     ;
+;     -- Combinational with a register        ; 11                    ;
 ;                                             ;                       ;
 ; Logic element usage by number of LUT inputs ;                       ;
-;     -- 4 input functions                    ; 19                    ;
-;     -- 3 input functions                    ; 9                     ;
-;     -- <=2 input functions                  ; 7                     ;
-;     -- Register only                        ; 7                     ;
+;     -- 4 input functions                    ; 7                     ;
+;     -- 3 input functions                    ; 6                     ;
+;     -- <=2 input functions                  ; 4                     ;
+;     -- Register only                        ; 1                     ;
 ;                                             ;                       ;
 ; Logic elements by mode                      ;                       ;
-;     -- normal mode                          ; 34                    ;
+;     -- normal mode                          ; 16                    ;
 ;     -- arithmetic mode                      ; 1                     ;
 ;                                             ;                       ;
-; Total registers*                            ; 33 / 34,593 ( < 1 % ) ;
-;     -- Dedicated logic registers            ; 33 / 33,216 ( < 1 % ) ;
+; Total registers*                            ; 12 / 34,593 ( < 1 % ) ;
+;     -- Dedicated logic registers            ; 12 / 33,216 ( < 1 % ) ;
 ;     -- I/O registers                        ; 0 / 1,377 ( 0 % )     ;
 ;                                             ;                       ;
 ; Total LABs:  partially or completely used   ; 3 / 2,076 ( < 1 % )   ;
@@ -215,22 +215,22 @@ The pin-out file can be found in /home/cicero/Dropbox/CeT 2018.1/Sistemas Digita
 ; I/O pins                                    ; 42 / 475 ( 9 % )      ;
 ;     -- Clock pins                           ; 1 / 8 ( 13 % )        ;
 ;                                             ;                       ;
-; Global signals                              ; 2                     ;
+; Global signals                              ; 1                     ;
 ; M4Ks                                        ; 0 / 105 ( 0 % )       ;
 ; Total block memory bits                     ; 0 / 483,840 ( 0 % )   ;
 ; Total block memory implementation bits      ; 0 / 483,840 ( 0 % )   ;
 ; Embedded Multiplier 9-bit elements          ; 0 / 70 ( 0 % )        ;
 ; PLLs                                        ; 0 / 4 ( 0 % )         ;
-; Global clocks                               ; 2 / 16 ( 13 % )       ;
+; Global clocks                               ; 1 / 16 ( 6 % )        ;
 ; JTAGs                                       ; 0 / 1 ( 0 % )         ;
 ; ASMI blocks                                 ; 0 / 1 ( 0 % )         ;
 ; CRC blocks                                  ; 0 / 1 ( 0 % )         ;
 ; Average interconnect usage (total/H/V)      ; 0% / 0% / 0%          ;
 ; Peak interconnect usage (total/H/V)         ; 0% / 0% / 0%          ;
-; Maximum fan-out                             ; 33                    ;
-; Highest non-global fan-out                  ; 33                    ;
-; Total fan-out                               ; 242                   ;
-; Average fan-out                             ; 2.03                  ;
+; Maximum fan-out                             ; 12                    ;
+; Highest non-global fan-out                  ; 12                    ;
+; Total fan-out                               ; 100                   ;
+; Average fan-out                             ; 1.32                  ;
 +---------------------------------------------+-----------------------+
 *  Register count does not include registers inside RAM blocks or DSP blocks.
 
@@ -243,23 +243,23 @@ The pin-out file can be found in /home/cicero/Dropbox/CeT 2018.1/Sistemas Digita
 +---------------------------------------------+----------------------+--------------------------------+
 ; Difficulty Clustering Region                ; Low                  ; Low                            ;
 ;                                             ;                      ;                                ;
-; Total logic elements                        ; 42 / 33216 ( < 1 % ) ; 0 / 33216 ( 0 % )              ;
-;     -- Combinational with no register       ; 9                    ; 0                              ;
-;     -- Register only                        ; 7                    ; 0                              ;
-;     -- Combinational with a register        ; 26                   ; 0                              ;
+; Total logic elements                        ; 18 / 33216 ( < 1 % ) ; 0 / 33216 ( 0 % )              ;
+;     -- Combinational with no register       ; 6                    ; 0                              ;
+;     -- Register only                        ; 1                    ; 0                              ;
+;     -- Combinational with a register        ; 11                   ; 0                              ;
 ;                                             ;                      ;                                ;
 ; Logic element usage by number of LUT inputs ;                      ;                                ;
-;     -- 4 input functions                    ; 19                   ; 0                              ;
-;     -- 3 input functions                    ; 9                    ; 0                              ;
-;     -- <=2 input functions                  ; 7                    ; 0                              ;
-;     -- Register only                        ; 7                    ; 0                              ;
+;     -- 4 input functions                    ; 7                    ; 0                              ;
+;     -- 3 input functions                    ; 6                    ; 0                              ;
+;     -- <=2 input functions                  ; 4                    ; 0                              ;
+;     -- Register only                        ; 1                    ; 0                              ;
 ;                                             ;                      ;                                ;
 ; Logic elements by mode                      ;                      ;                                ;
-;     -- normal mode                          ; 34                   ; 0                              ;
+;     -- normal mode                          ; 16                   ; 0                              ;
 ;     -- arithmetic mode                      ; 1                    ; 0                              ;
 ;                                             ;                      ;                                ;
-; Total registers                             ; 33                   ; 0                              ;
-;     -- Dedicated logic registers            ; 33 / 33216 ( < 1 % ) ; 0 / 33216 ( 0 % )              ;
+; Total registers                             ; 12                   ; 0                              ;
+;     -- Dedicated logic registers            ; 12 / 33216 ( < 1 % ) ; 0 / 33216 ( 0 % )              ;
 ;                                             ;                      ;                                ;
 ; Total LABs:  partially or completely used   ; 3 / 2076 ( < 1 % )   ; 0 / 2076 ( 0 % )               ;
 ;                                             ;                      ;                                ;
@@ -268,7 +268,7 @@ The pin-out file can be found in /home/cicero/Dropbox/CeT 2018.1/Sistemas Digita
 ; Embedded Multiplier 9-bit elements          ; 0 / 70 ( 0 % )       ; 0 / 70 ( 0 % )                 ;
 ; Total memory bits                           ; 0                    ; 0                              ;
 ; Total RAM block bits                        ; 0                    ; 0                              ;
-; Clock control block                         ; 2 / 20 ( 10 % )      ; 0 / 20 ( 0 % )                 ;
+; Clock control block                         ; 1 / 20 ( 5 % )       ; 0 / 20 ( 0 % )                 ;
 ;                                             ;                      ;                                ;
 ; Connections                                 ;                      ;                                ;
 ;     -- Input Connections                    ; 0                    ; 0                              ;
@@ -277,8 +277,8 @@ The pin-out file can be found in /home/cicero/Dropbox/CeT 2018.1/Sistemas Digita
 ;     -- Registered Output Connections        ; 0                    ; 0                              ;
 ;                                             ;                      ;                                ;
 ; Internal Connections                        ;                      ;                                ;
-;     -- Total Connections                    ; 242                  ; 0                              ;
-;     -- Registered Connections               ; 124                  ; 0                              ;
+;     -- Total Connections                    ; 100                  ; 0                              ;
+;     -- Registered Connections               ; 54                   ; 0                              ;
 ;                                             ;                      ;                                ;
 ; External Connections                        ;                      ;                                ;
 ;     -- Top                                  ; 0                    ; 0                              ;
@@ -310,8 +310,8 @@ The pin-out file can be found in /home/cicero/Dropbox/CeT 2018.1/Sistemas Digita
 +-------+-------+----------+--------------+--------------+-------------+-----------------------+--------------------+--------+----------------+---------------+-----------------+----------+--------------+--------------+-------------+----------------------+
 ; Name  ; Pin # ; I/O Bank ; X coordinate ; Y coordinate ; Cell number ; Combinational Fan-Out ; Registered Fan-Out ; Global ; Input Register ; Power Up High ; PCI I/O Enabled ; Bus Hold ; Weak Pull Up ; I/O Standard ; Termination ; Location assigned by ;
 +-------+-------+----------+--------------+--------------+-------------+-----------------------+--------------------+--------+----------------+---------------+-----------------+----------+--------------+--------------+-------------+----------------------+
-; clk   ; G26   ; 5        ; 65           ; 27           ; 1           ; 33                    ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
-; rst   ; N25   ; 5        ; 65           ; 19           ; 0           ; 12                    ; 0                  ; yes    ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
+; clk   ; G26   ; 5        ; 65           ; 27           ; 1           ; 12                    ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
+; rst   ; N25   ; 5        ; 65           ; 19           ; 0           ; 5                     ; 0                  ; yes    ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
 ; start ; V2    ; 1        ; 0            ; 12           ; 3           ; 2                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
 +-------+-------+----------+--------------+--------------+-------------+-----------------------+--------------------+--------+----------------+---------------+-----------------+----------+--------------+--------------+-------------+----------------------+
 
@@ -356,10 +356,10 @@ The pin-out file can be found in /home/cicero/Dropbox/CeT 2018.1/Sistemas Digita
 ; hex4[4]   ; R7    ; 1        ; 0            ; 14           ; 1           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; User                 ; 0 pF ; -                    ; -                   ;
 ; hex4[5]   ; R6    ; 1        ; 0            ; 14           ; 0           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; User                 ; 0 pF ; -                    ; -                   ;
 ; hex4[6]   ; T3    ; 1        ; 0            ; 15           ; 3           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; User                 ; 0 pF ; -                    ; -                   ;
-; output[0] ; T2    ; 1        ; 0            ; 15           ; 2           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; output[1] ; P7    ; 1        ; 0            ; 15           ; 0           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; output[2] ; P6    ; 1        ; 0            ; 15           ; 1           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; output[3] ; U10   ; 1        ; 0            ; 13           ; 3           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; output[0] ; J22   ; 5        ; 65           ; 31           ; 2           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; output[1] ; AF9   ; 8        ; 22           ; 0            ; 2           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; output[2] ; F1    ; 2        ; 0            ; 28           ; 1           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; output[3] ; C2    ; 2        ; 0            ; 33           ; 1           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
 +-----------+-------+----------+--------------+--------------+-------------+-----------------+------------------------+---------------+-----------------+------------+---------------+----------+--------------+--------------+------------------+-------------+----------------------+------+----------------------+---------------------+
 
 
@@ -368,14 +368,14 @@ The pin-out file can be found in /home/cicero/Dropbox/CeT 2018.1/Sistemas Digita
 +----------+------------------+---------------+--------------+
 ; I/O Bank ; Usage            ; VCCIO Voltage ; VREF Voltage ;
 +----------+------------------+---------------+--------------+
-; 1        ; 12 / 64 ( 19 % ) ; 3.3V          ; --           ;
-; 2        ; 2 / 59 ( 3 % )   ; 3.3V          ; --           ;
+; 1        ; 8 / 64 ( 13 % )  ; 3.3V          ; --           ;
+; 2        ; 4 / 59 ( 7 % )   ; 3.3V          ; --           ;
 ; 3        ; 0 / 56 ( 0 % )   ; 3.3V          ; --           ;
 ; 4        ; 0 / 58 ( 0 % )   ; 3.3V          ; --           ;
-; 5        ; 2 / 65 ( 3 % )   ; 3.3V          ; --           ;
+; 5        ; 3 / 65 ( 5 % )   ; 3.3V          ; --           ;
 ; 6        ; 22 / 59 ( 37 % ) ; 3.3V          ; --           ;
 ; 7        ; 0 / 58 ( 0 % )   ; 3.3V          ; --           ;
-; 8        ; 7 / 56 ( 13 % )  ; 3.3V          ; --           ;
+; 8        ; 8 / 56 ( 14 % )  ; 3.3V          ; --           ;
 +----------+------------------+---------------+--------------+
 
 
@@ -545,7 +545,7 @@ The pin-out file can be found in /home/cicero/Dropbox/CeT 2018.1/Sistemas Digita
 ; AF6      ; 151        ; 8        ; RESERVED_INPUT                           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AF7      ; 158        ; 8        ; RESERVED_INPUT                           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AF8      ; 160        ; 8        ; RESERVED_INPUT                           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; AF9      ; 166        ; 8        ; RESERVED_INPUT                           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; AF9      ; 166        ; 8        ; output[1]                                ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; AF10     ; 170        ; 8        ; hex0[0]                                  ; output ; 3.3-V LVTTL  ;         ; Column I/O ; Y               ; no       ; Off          ;
 ; AF11     ;            ; 8        ; VCCIO8                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
 ; AF12     ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
@@ -589,7 +589,7 @@ The pin-out file can be found in /home/cicero/Dropbox/CeT 2018.1/Sistemas Digita
 ; B25      ; 362        ; 5        ; RESERVED_INPUT                           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; B26      ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; C1       ;            ; 2        ; VCCIO2                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
-; C2       ; 6          ; 2        ; RESERVED_INPUT                           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; C2       ; 6          ; 2        ; output[3]                                ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
 ; C3       ; 7          ; 2        ; RESERVED_INPUT                           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; C4       ; 478        ; 3        ; RESERVED_INPUT                           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; C5       ; 486        ; 3        ; RESERVED_INPUT                           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
@@ -666,7 +666,7 @@ The pin-out file can be found in /home/cicero/Dropbox/CeT 2018.1/Sistemas Digita
 ; E24      ; 364        ; 5        ; RESERVED_INPUT                           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; E25      ; 355        ; 5        ; RESERVED_INPUT                           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; E26      ; 356        ; 5        ; RESERVED_INPUT                           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; F1       ; 29         ; 2        ; RESERVED_INPUT                           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; F1       ; 29         ; 2        ; output[2]                                ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
 ; F2       ; 28         ; 2        ; RESERVED_INPUT                           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; F3       ; 10         ; 2        ; RESERVED_INPUT                           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; F4       ; 11         ; 2        ; RESERVED_INPUT                           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
@@ -765,7 +765,7 @@ The pin-out file can be found in /home/cicero/Dropbox/CeT 2018.1/Sistemas Digita
 ; J19      ;            ; 5        ; VCCIO5                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
 ; J20      ; 351        ; 5        ; RESERVED_INPUT                           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; J21      ; 352        ; 5        ; RESERVED_INPUT                           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; J22      ; 357        ; 5        ; RESERVED_INPUT                           ;        ;              ;         ; Row I/O    ;                 ; --       ; --           ;
+; J22      ; 357        ; 5        ; output[0]                                ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
 ; J23      ; 339        ; 5        ; RESERVED_INPUT                           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; J24      ; 338        ; 5        ; RESERVED_INPUT                           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; J25      ; 327        ; 5        ; RESERVED_INPUT                           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
@@ -879,8 +879,8 @@ The pin-out file can be found in /home/cicero/Dropbox/CeT 2018.1/Sistemas Digita
 ; P3       ; 69         ; 1        ; RESERVED_INPUT                           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; P4       ; 70         ; 1        ; RESERVED_INPUT                           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; P5       ;            ; 1        ; VCCIO1                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
-; P6       ; 78         ; 1        ; output[2]                                ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
-; P7       ; 77         ; 1        ; output[1]                                ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
+; P6       ; 78         ; 1        ; RESERVED_INPUT                           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; P7       ; 77         ; 1        ; RESERVED_INPUT                           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; P8       ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; P9       ; 46         ; 2        ; RESERVED_INPUT                           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; P10      ;            ;          ; VCCINT                                   ; power  ;              ; 1.2V    ; --         ;                 ; --       ; --           ;
@@ -927,7 +927,7 @@ The pin-out file can be found in /home/cicero/Dropbox/CeT 2018.1/Sistemas Digita
 ; R25      ; 303        ; 6        ; RESERVED_INPUT                           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; R26      ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; T1       ;            ; 1        ; VCCIO1                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
-; T2       ; 79         ; 1        ; output[0]                                ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
+; T2       ; 79         ; 1        ; RESERVED_INPUT                           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; T3       ; 80         ; 1        ; hex4[6]                                  ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; Y               ; no       ; Off          ;
 ; T4       ; 83         ; 1        ; hex4[3]                                  ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; Y               ; no       ; Off          ;
 ; T5       ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
@@ -961,7 +961,7 @@ The pin-out file can be found in /home/cicero/Dropbox/CeT 2018.1/Sistemas Digita
 ; U7       ; 99         ; 1        ; RESERVED_INPUT                           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; U8       ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; U9       ; 86         ; 1        ; hex4[0]                                  ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; Y               ; no       ; Off          ;
-; U10      ; 87         ; 1        ; output[3]                                ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
+; U10      ; 87         ; 1        ; RESERVED_INPUT                           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; U11      ;            ;          ; VCCINT                                   ; power  ;              ; 1.2V    ; --         ;                 ; --       ; --           ;
 ; U12      ; 178        ; 8        ; RESERVED_INPUT                           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; U13      ;            ;          ; VCCINT                                   ; power  ;              ; 1.2V    ; --         ;                 ; --       ; --           ;
@@ -1097,17 +1097,14 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 Note: User assignments will override these defaults. The user specified values are listed in the Output Pins and Bidir Pins tables.
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Fitter Resource Utilization by Entity                                                                                                                                                                                                                                               ;
-+------------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+---------------------------------------+--------------+
-; Compilation Hierarchy Node   ; Logic Cells ; Dedicated Logic Registers ; I/O Registers ; Memory Bits ; M4Ks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Full Hierarchy Name                   ; Library Name ;
-+------------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+---------------------------------------+--------------+
-; |cpu                         ; 42 (14)     ; 33 (13)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 42   ; 0            ; 9 (1)        ; 7 (2)             ; 26 (9)           ; |cpu                                  ; work         ;
-;    |ctrl:controller|         ; 23 (23)     ; 16 (16)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 5 (5)        ; 3 (3)             ; 15 (15)          ; |cpu|ctrl:controller                  ; work         ;
-;    |dp:datapath|             ; 7 (0)       ; 4 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 3 (0)        ; 2 (0)             ; 2 (0)            ; |cpu|dp:datapath                      ; work         ;
-;       |acc:acumulador_atual| ; 4 (4)       ; 4 (4)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 2 (2)             ; 2 (2)            ; |cpu|dp:datapath|acc:acumulador_atual ; work         ;
-;       |alu:alu1|             ; 5 (5)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 3 (3)        ; 0 (0)             ; 2 (2)            ; |cpu|dp:datapath|alu:alu1             ; work         ;
-+------------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+---------------------------------------+--------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fitter Resource Utilization by Entity                                                                                                                                                                                                                            ;
++----------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+----------------------+--------------+
+; Compilation Hierarchy Node ; Logic Cells ; Dedicated Logic Registers ; I/O Registers ; Memory Bits ; M4Ks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Full Hierarchy Name  ; Library Name ;
++----------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+----------------------+--------------+
+; |cpu                       ; 18 (2)      ; 12 (2)                    ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 42   ; 0            ; 6 (0)        ; 1 (0)             ; 11 (2)           ; |cpu                 ; work         ;
+;    |ctrl:controller|       ; 16 (16)     ; 10 (10)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 6 (6)        ; 1 (1)             ; 9 (9)            ; |cpu|ctrl:controller ; work         ;
++----------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+----------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -1161,154 +1158,90 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------+----------+---------------+---------------+-----------------------+-----+
 
 
-+---------------------------------------------------------------------------------+
-; Pad To Core Delay Chain Fanout                                                  ;
-+---------------------------------------------------+-------------------+---------+
-; Source Pin / Fanout                               ; Pad To Core Index ; Setting ;
-+---------------------------------------------------+-------------------+---------+
-; clk                                               ;                   ;         ;
-;      - hex0[0]~reg0                               ; 1                 ; 0       ;
-;      - hex1[0]~reg0                               ; 1                 ; 0       ;
-;      - hex4[0]~reg0                               ; 1                 ; 0       ;
-;      - hex4[1]~reg0                               ; 1                 ; 0       ;
-;      - hex4[2]~reg0                               ; 1                 ; 0       ;
-;      - hex4[3]~reg0                               ; 1                 ; 0       ;
-;      - hex4[4]~reg0                               ; 1                 ; 0       ;
-;      - hex4[5]~reg0                               ; 1                 ; 0       ;
-;      - hex4[6]~reg0                               ; 1                 ; 0       ;
-;      - output[0]~reg0                             ; 1                 ; 0       ;
-;      - output[1]~reg0                             ; 1                 ; 0       ;
-;      - output[2]~reg0                             ; 1                 ; 0       ;
-;      - output[3]~reg0                             ; 1                 ; 0       ;
-;      - dp:datapath|acc:acumulador_atual|output[0] ; 1                 ; 0       ;
-;      - dp:datapath|acc:acumulador_atual|output[1] ; 1                 ; 0       ;
-;      - dp:datapath|acc:acumulador_atual|output[2] ; 1                 ; 0       ;
-;      - dp:datapath|acc:acumulador_atual|output[3] ; 1                 ; 0       ;
-;      - ctrl:controller|estado_atual[0]            ; 1                 ; 0       ;
-;      - ctrl:controller|estado_atual[1]            ; 1                 ; 0       ;
-;      - ctrl:controller|enable                     ; 1                 ; 0       ;
-;      - ctrl:controller|state.s0                   ; 1                 ; 0       ;
-;      - ctrl:controller|state.s1                   ; 1                 ; 0       ;
-;      - ctrl:controller|state.s2                   ; 1                 ; 0       ;
-;      - ctrl:controller|OPCODE[1]                  ; 1                 ; 0       ;
-;      - ctrl:controller|state.s3                   ; 1                 ; 0       ;
-;      - ctrl:controller|imm[0]                     ; 1                 ; 0       ;
-;      - ctrl:controller|state.done                 ; 1                 ; 0       ;
-;      - ctrl:controller|imm[1]                     ; 1                 ; 0       ;
-;      - ctrl:controller|imm[3]                     ; 1                 ; 0       ;
-;      - ctrl:controller|PC[1]                      ; 1                 ; 0       ;
-;      - ctrl:controller|PC[0]                      ; 1                 ; 0       ;
-;      - ctrl:controller|ADDRESS[0]                 ; 1                 ; 0       ;
-;      - ctrl:controller|ADDRESS[1]                 ; 1                 ; 0       ;
-; rst                                               ;                   ;         ;
-; start                                             ;                   ;         ;
-;      - ctrl:controller|state.s0~0                 ; 0                 ; 6       ;
-;      - ctrl:controller|Selector38~0               ; 0                 ; 6       ;
-+---------------------------------------------------+-------------------+---------+
++----------------------------------------------------------------------+
+; Pad To Core Delay Chain Fanout                                       ;
++----------------------------------------+-------------------+---------+
+; Source Pin / Fanout                    ; Pad To Core Index ; Setting ;
++----------------------------------------+-------------------+---------+
+; clk                                    ;                   ;         ;
+;      - hex0[0]~reg0                    ; 1                 ; 0       ;
+;      - hex1[0]~reg0                    ; 1                 ; 0       ;
+;      - ctrl:controller|estado_atual[0] ; 1                 ; 0       ;
+;      - ctrl:controller|estado_atual[1] ; 1                 ; 0       ;
+;      - ctrl:controller|state.s0        ; 1                 ; 0       ;
+;      - ctrl:controller|state.s1        ; 1                 ; 0       ;
+;      - ctrl:controller|state.s2        ; 1                 ; 0       ;
+;      - ctrl:controller|OPCODE[1]       ; 1                 ; 0       ;
+;      - ctrl:controller|state.s3        ; 1                 ; 0       ;
+;      - ctrl:controller|PC[1]           ; 1                 ; 0       ;
+;      - ctrl:controller|PC[0]           ; 1                 ; 0       ;
+;      - ctrl:controller|state.done      ; 1                 ; 0       ;
+; rst                                    ;                   ;         ;
+; start                                  ;                   ;         ;
+;      - ctrl:controller|state.s0~0      ; 1                 ; 6       ;
+;      - ctrl:controller|Selector38~0    ; 1                 ; 6       ;
++----------------------------------------+-------------------+---------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Control Signals                                                                                                                                         ;
-+-----------------------------+-------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
-; Name                        ; Location          ; Fan-Out ; Usage        ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
-+-----------------------------+-------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
-; clk                         ; PIN_G26           ; 33      ; Clock        ; no     ; --                   ; --               ; --                        ;
-; ctrl:controller|OPCODE[1]~0 ; LCCOMB_X2_Y14_N16 ; 3       ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; ctrl:controller|enable      ; LCFF_X2_Y14_N7    ; 6       ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; dp:datapath|alu:alu1|Mux4~0 ; LCCOMB_X1_Y14_N8  ; 4       ; Latch enable ; yes    ; Global Clock         ; GCLK2            ; --                        ;
-; hex4[0]~0                   ; LCCOMB_X1_Y14_N2  ; 7       ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; rst                         ; PIN_N25           ; 12      ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; rst                         ; PIN_N25           ; 11      ; Async. clear ; yes    ; Global Clock         ; GCLK6            ; --                        ;
-+-----------------------------+-------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
++-------------------------------------------------------------------------------------------------------------------------+
+; Control Signals                                                                                                         ;
++------+----------+---------+--------------+--------+----------------------+------------------+---------------------------+
+; Name ; Location ; Fan-Out ; Usage        ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
++------+----------+---------+--------------+--------+----------------------+------------------+---------------------------+
+; clk  ; PIN_G26  ; 12      ; Clock        ; no     ; --                   ; --               ; --                        ;
+; rst  ; PIN_N25  ; 5       ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; rst  ; PIN_N25  ; 7       ; Async. clear ; yes    ; Global Clock         ; GCLK6            ; --                        ;
++------+----------+---------+--------------+--------+----------------------+------------------+---------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------+
-; Global & Other Fast Signals                                                                                                    ;
-+-----------------------------+------------------+---------+----------------------+------------------+---------------------------+
-; Name                        ; Location         ; Fan-Out ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
-+-----------------------------+------------------+---------+----------------------+------------------+---------------------------+
-; dp:datapath|alu:alu1|Mux4~0 ; LCCOMB_X1_Y14_N8 ; 4       ; Global Clock         ; GCLK2            ; --                        ;
-; rst                         ; PIN_N25          ; 11      ; Global Clock         ; GCLK6            ; --                        ;
-+-----------------------------+------------------+---------+----------------------+------------------+---------------------------+
++-------------------------------------------------------------------------------------------------+
+; Global & Other Fast Signals                                                                     ;
++------+----------+---------+----------------------+------------------+---------------------------+
+; Name ; Location ; Fan-Out ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
++------+----------+---------+----------------------+------------------+---------------------------+
+; rst  ; PIN_N25  ; 7       ; Global Clock         ; GCLK6            ; --                        ;
++------+----------+---------+----------------------+------------------+---------------------------+
 
 
-+------------------------------------------------------+
-; Non-Global High Fan-Out Signals                      ;
-+--------------------------------------------+---------+
-; Name                                       ; Fan-Out ;
-+--------------------------------------------+---------+
-; clk                                        ; 33      ;
-; rst                                        ; 11      ;
-; dp:datapath|acc:acumulador_atual|output[3] ; 9       ;
-; dp:datapath|acc:acumulador_atual|output[2] ; 9       ;
-; dp:datapath|acc:acumulador_atual|output[1] ; 9       ;
-; hex0[0]~reg0                               ; 9       ;
-; ctrl:controller|state.s3                   ; 8       ;
-; dp:datapath|acc:acumulador_atual|output[0] ; 8       ;
-; ctrl:controller|state.s2                   ; 7       ;
-; hex4[0]~0                                  ; 7       ;
-; ctrl:controller|state.s1                   ; 6       ;
-; ctrl:controller|enable                     ; 6       ;
-; ctrl:controller|OPCODE[1]                  ; 5       ;
-; ctrl:controller|estado_atual[1]            ; 5       ;
-; hex1[0]~reg0                               ; 5       ;
-; ctrl:controller|PC[0]                      ; 4       ;
-; ctrl:controller|PC[1]                      ; 4       ;
-; ctrl:controller|WideOr1                    ; 4       ;
-; ctrl:controller|state.s0                   ; 4       ;
-; ctrl:controller|estado_atual[0]            ; 4       ;
-; ctrl:controller|OPCODE[1]~0                ; 3       ;
-; ctrl:controller|state.done                 ; 3       ;
-; start                                      ; 2       ;
-; dp:datapath|alu:alu1|output[3]             ; 2       ;
-; dp:datapath|alu:alu1|output[2]             ; 2       ;
-; dp:datapath|alu:alu1|output[1]             ; 2       ;
-; dp:datapath|alu:alu1|output[0]             ; 2       ;
-; ctrl:controller|Selector31~0               ; 2       ;
-; ctrl:controller|imm[3]                     ; 2       ;
-; ctrl:controller|imm[1]                     ; 2       ;
-; ctrl:controller|imm[0]                     ; 2       ;
-; ctrl:controller|Selector32~0               ; 1       ;
-; ctrl:controller|Selector31~1               ; 1       ;
-; ctrl:controller|Selector33~0               ; 1       ;
-; ctrl:controller|Selector35~0               ; 1       ;
-; ctrl:controller|ADDRESS[1]                 ; 1       ;
-; ctrl:controller|state.done~0               ; 1       ;
-; ctrl:controller|Selector36~0               ; 1       ;
-; ctrl:controller|ADDRESS[0]                 ; 1       ;
-; ctrl:controller|Selector40~0               ; 1       ;
-; ctrl:controller|Mux1~0                     ; 1       ;
-; ctrl:controller|Selector38~0               ; 1       ;
-; ctrl:controller|state.s0~0                 ; 1       ;
-; ctrl:controller|Selector0~0                ; 1       ;
-; ctrl:controller|Selector44~1               ; 1       ;
-; ctrl:controller|Selector44~0               ; 1       ;
-; ctrl:controller|Selector45~1               ; 1       ;
-; ctrl:controller|Selector45~0               ; 1       ;
-; Mux0~0                                     ; 1       ;
-; Mux1~0                                     ; 1       ;
-; Mux2~0                                     ; 1       ;
-; Mux3~0                                     ; 1       ;
-; Mux4~0                                     ; 1       ;
-; Mux5~0                                     ; 1       ;
-; Mux6~0                                     ; 1       ;
-; Mux27~0                                    ; 1       ;
-; hex0[0]~0                                  ; 1       ;
-; hex4[6]~reg0                               ; 1       ;
-; hex4[5]~reg0                               ; 1       ;
-; hex4[4]~reg0                               ; 1       ;
-; hex4[3]~reg0                               ; 1       ;
-; hex4[2]~reg0                               ; 1       ;
-; hex4[1]~reg0                               ; 1       ;
-; hex4[0]~reg0                               ; 1       ;
-; output[3]~reg0                             ; 1       ;
-; output[2]~reg0                             ; 1       ;
-; output[1]~reg0                             ; 1       ;
-; output[0]~reg0                             ; 1       ;
-; ctrl:controller|Add0~2                     ; 1       ;
-; ctrl:controller|Add0~1                     ; 1       ;
-; ctrl:controller|Add0~0                     ; 1       ;
-+--------------------------------------------+---------+
++-------------------------------------------+
+; Non-Global High Fan-Out Signals           ;
++---------------------------------+---------+
+; Name                            ; Fan-Out ;
++---------------------------------+---------+
+; clk                             ; 12      ;
+; hex0[0]~reg0                    ; 9       ;
+; ctrl:controller|state.s2        ; 6       ;
+; ctrl:controller|state.s1        ; 6       ;
+; ctrl:controller|OPCODE[1]       ; 5       ;
+; hex1[0]~reg0                    ; 5       ;
+; rst                             ; 4       ;
+; ctrl:controller|state.s3        ; 4       ;
+; ctrl:controller|state.s0        ; 4       ;
+; ctrl:controller|estado_atual[1] ; 4       ;
+; ctrl:controller|PC[0]           ; 3       ;
+; ctrl:controller|PC[1]           ; 3       ;
+; ctrl:controller|estado_atual[0] ; 3       ;
+; start                           ; 2       ;
+; ctrl:controller|Selector31~0    ; 2       ;
+; ctrl:controller|state.done      ; 2       ;
+; ctrl:controller|state.done~0    ; 1       ;
+; ctrl:controller|Selector32~0    ; 1       ;
+; ctrl:controller|Selector31~1    ; 1       ;
+; ctrl:controller|Selector40~0    ; 1       ;
+; ctrl:controller|OPCODE[1]~1     ; 1       ;
+; ctrl:controller|OPCODE[1]~0     ; 1       ;
+; ctrl:controller|Selector38~0    ; 1       ;
+; ctrl:controller|state.s0~0      ; 1       ;
+; ctrl:controller|Selector44~1    ; 1       ;
+; ctrl:controller|Selector44~0    ; 1       ;
+; ctrl:controller|Selector45~1    ; 1       ;
+; ctrl:controller|Selector45~0    ; 1       ;
+; Mux27~0                         ; 1       ;
+; hex0[0]~0                       ; 1       ;
+; ctrl:controller|Add0~2          ; 1       ;
+; ctrl:controller|Add0~1          ; 1       ;
+; ctrl:controller|Add0~0          ; 1       ;
++---------------------------------+---------+
 
 
 +-----------------------------------------------------+
@@ -1316,66 +1249,66 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------------+-----------------------+
 ; Other Routing Resource Type ; Usage                 ;
 +-----------------------------+-----------------------+
-; Block interconnects         ; 61 / 94,460 ( < 1 % ) ;
+; Block interconnects         ; 29 / 94,460 ( < 1 % ) ;
 ; C16 interconnects           ; 4 / 3,315 ( < 1 % )   ;
-; C4 interconnects            ; 25 / 60,840 ( < 1 % ) ;
-; Direct links                ; 22 / 94,460 ( < 1 % ) ;
-; Global clocks               ; 2 / 16 ( 13 % )       ;
-; Local interconnects         ; 23 / 33,216 ( < 1 % ) ;
-; R24 interconnects           ; 14 / 3,091 ( < 1 % )  ;
-; R4 interconnects            ; 35 / 81,294 ( < 1 % ) ;
+; C4 interconnects            ; 19 / 60,840 ( < 1 % ) ;
+; Direct links                ; 8 / 94,460 ( < 1 % )  ;
+; Global clocks               ; 1 / 16 ( 6 % )        ;
+; Local interconnects         ; 13 / 33,216 ( < 1 % ) ;
+; R24 interconnects           ; 6 / 3,091 ( < 1 % )   ;
+; R4 interconnects            ; 8 / 81,294 ( < 1 % )  ;
 +-----------------------------+-----------------------+
 
 
-+---------------------------------------------------------------------------+
-; LAB Logic Elements                                                        ;
-+---------------------------------------------+-----------------------------+
-; Number of Logic Elements  (Average = 14.00) ; Number of LABs  (Total = 3) ;
-+---------------------------------------------+-----------------------------+
-; 1                                           ; 0                           ;
-; 2                                           ; 0                           ;
-; 3                                           ; 0                           ;
-; 4                                           ; 0                           ;
-; 5                                           ; 0                           ;
-; 6                                           ; 0                           ;
-; 7                                           ; 0                           ;
-; 8                                           ; 0                           ;
-; 9                                           ; 0                           ;
-; 10                                          ; 0                           ;
-; 11                                          ; 0                           ;
-; 12                                          ; 0                           ;
-; 13                                          ; 2                           ;
-; 14                                          ; 0                           ;
-; 15                                          ; 0                           ;
-; 16                                          ; 1                           ;
-+---------------------------------------------+-----------------------------+
++--------------------------------------------------------------------------+
+; LAB Logic Elements                                                       ;
++--------------------------------------------+-----------------------------+
+; Number of Logic Elements  (Average = 6.00) ; Number of LABs  (Total = 3) ;
++--------------------------------------------+-----------------------------+
+; 1                                          ; 1                           ;
+; 2                                          ; 0                           ;
+; 3                                          ; 0                           ;
+; 4                                          ; 1                           ;
+; 5                                          ; 0                           ;
+; 6                                          ; 0                           ;
+; 7                                          ; 0                           ;
+; 8                                          ; 0                           ;
+; 9                                          ; 0                           ;
+; 10                                         ; 0                           ;
+; 11                                         ; 0                           ;
+; 12                                         ; 0                           ;
+; 13                                         ; 1                           ;
+; 14                                         ; 0                           ;
+; 15                                         ; 0                           ;
+; 16                                         ; 0                           ;
++--------------------------------------------+-----------------------------+
 
 
 +------------------------------------------------------------------+
 ; LAB-wide Signals                                                 ;
 +------------------------------------+-----------------------------+
-; LAB-wide Signals  (Average = 2.67) ; Number of LABs  (Total = 3) ;
+; LAB-wide Signals  (Average = 2.00) ; Number of LABs  (Total = 3) ;
 +------------------------------------+-----------------------------+
 ; 1 Async. clear                     ; 2                           ;
 ; 1 Clock                            ; 3                           ;
-; 1 Clock enable                     ; 3                           ;
+; 1 Clock enable                     ; 1                           ;
 +------------------------------------+-----------------------------+
 
 
 +----------------------------------------------------------------------------+
 ; LAB Signals Sourced                                                        ;
 +----------------------------------------------+-----------------------------+
-; Number of Signals Sourced  (Average = 24.00) ; Number of LABs  (Total = 3) ;
+; Number of Signals Sourced  (Average = 10.00) ; Number of LABs  (Total = 3) ;
 +----------------------------------------------+-----------------------------+
 ; 0                                            ; 0                           ;
 ; 1                                            ; 0                           ;
-; 2                                            ; 0                           ;
+; 2                                            ; 1                           ;
 ; 3                                            ; 0                           ;
 ; 4                                            ; 0                           ;
 ; 5                                            ; 0                           ;
 ; 6                                            ; 0                           ;
 ; 7                                            ; 0                           ;
-; 8                                            ; 0                           ;
+; 8                                            ; 1                           ;
 ; 9                                            ; 0                           ;
 ; 10                                           ; 0                           ;
 ; 11                                           ; 0                           ;
@@ -1387,62 +1320,40 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; 17                                           ; 0                           ;
 ; 18                                           ; 0                           ;
 ; 19                                           ; 0                           ;
-; 20                                           ; 0                           ;
-; 21                                           ; 1                           ;
-; 22                                           ; 0                           ;
-; 23                                           ; 0                           ;
-; 24                                           ; 1                           ;
-; 25                                           ; 0                           ;
-; 26                                           ; 0                           ;
-; 27                                           ; 1                           ;
+; 20                                           ; 1                           ;
 +----------------------------------------------+-----------------------------+
 
 
-+--------------------------------------------------------------------------------+
-; LAB Signals Sourced Out                                                        ;
-+--------------------------------------------------+-----------------------------+
-; Number of Signals Sourced Out  (Average = 11.33) ; Number of LABs  (Total = 3) ;
-+--------------------------------------------------+-----------------------------+
-; 0                                                ; 0                           ;
-; 1                                                ; 0                           ;
-; 2                                                ; 0                           ;
-; 3                                                ; 0                           ;
-; 4                                                ; 0                           ;
-; 5                                                ; 0                           ;
-; 6                                                ; 0                           ;
-; 7                                                ; 0                           ;
-; 8                                                ; 1                           ;
-; 9                                                ; 0                           ;
-; 10                                               ; 0                           ;
-; 11                                               ; 0                           ;
-; 12                                               ; 1                           ;
-; 13                                               ; 0                           ;
-; 14                                               ; 1                           ;
-+--------------------------------------------------+-----------------------------+
++-------------------------------------------------------------------------------+
+; LAB Signals Sourced Out                                                       ;
++-------------------------------------------------+-----------------------------+
+; Number of Signals Sourced Out  (Average = 3.67) ; Number of LABs  (Total = 3) ;
++-------------------------------------------------+-----------------------------+
+; 0                                               ; 0                           ;
+; 1                                               ; 1                           ;
+; 2                                               ; 0                           ;
+; 3                                               ; 0                           ;
+; 4                                               ; 1                           ;
+; 5                                               ; 0                           ;
+; 6                                               ; 1                           ;
++-------------------------------------------------+-----------------------------+
 
 
-+----------------------------------------------------------------------------+
-; LAB Distinct Inputs                                                        ;
-+----------------------------------------------+-----------------------------+
-; Number of Distinct Inputs  (Average = 10.00) ; Number of LABs  (Total = 3) ;
-+----------------------------------------------+-----------------------------+
-; 0                                            ; 0                           ;
-; 1                                            ; 0                           ;
-; 2                                            ; 0                           ;
-; 3                                            ; 0                           ;
-; 4                                            ; 1                           ;
-; 5                                            ; 0                           ;
-; 6                                            ; 0                           ;
-; 7                                            ; 0                           ;
-; 8                                            ; 0                           ;
-; 9                                            ; 0                           ;
-; 10                                           ; 0                           ;
-; 11                                           ; 1                           ;
-; 12                                           ; 0                           ;
-; 13                                           ; 0                           ;
-; 14                                           ; 0                           ;
-; 15                                           ; 1                           ;
-+----------------------------------------------+-----------------------------+
++---------------------------------------------------------------------------+
+; LAB Distinct Inputs                                                       ;
++---------------------------------------------+-----------------------------+
+; Number of Distinct Inputs  (Average = 6.33) ; Number of LABs  (Total = 3) ;
++---------------------------------------------+-----------------------------+
+; 0                                           ; 0                           ;
+; 1                                           ; 0                           ;
+; 2                                           ; 0                           ;
+; 3                                           ; 0                           ;
+; 4                                           ; 1                           ;
+; 5                                           ; 0                           ;
+; 6                                           ; 0                           ;
+; 7                                           ; 1                           ;
+; 8                                           ; 1                           ;
++---------------------------------------------+-----------------------------+
 
 
 +-------------------------------------------------------------------------+
@@ -1479,19 +1390,17 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------+----------------------+-------------------+
 ; Source Clock(s) ; Destination Clock(s) ; Delay Added in ns ;
 +-----------------+----------------------+-------------------+
-; I/O             ; clk                  ; 6.4               ;
-+-----------------+----------------------+-------------------+
 Note: For more information on problematic transfers, consider running the Fitter again with the Optimize hold timing option (Settings Menu) turned off.
 This will disable optimization of problematic paths and expose them for further analysis using either the TimeQuest Timing Analyzer or the Classic Timing Analyzer.
 
 
-+------------------------------------------------------------+
-; Estimated Delay Added for Hold Timing Details              ;
-+-----------------+----------------------+-------------------+
-; Source Register ; Destination Register ; Delay Added in ns ;
-+-----------------+----------------------+-------------------+
-; clk             ; hex4[0]~reg0         ; 2.967             ;
-+-----------------+----------------------+-------------------+
++-------------------------------------------------------------+
+; Estimated Delay Added for Hold Timing Details               ;
++-----------------+-----------------------+-------------------+
+; Source Register ; Destination Register  ; Delay Added in ns ;
++-----------------+-----------------------+-------------------+
+; clk             ; ctrl:controller|PC[1] ; 0.343             ;
++-----------------+-----------------------+-------------------+
 Note: This table only shows the top 1 path(s) that have the largest delay added for hold.
 
 
@@ -1516,26 +1425,16 @@ Critical Warning (169085): No exact pin location assignment(s) for 4 pins of 42 
     Info (169086): Pin output[1] not assigned to an exact location on the device
     Info (169086): Pin output[2] not assigned to an exact location on the device
     Info (169086): Pin output[3] not assigned to an exact location on the device
-Warning (335093): TimeQuest Timing Analyzer is analyzing 4 combinational loops as latches.
 Critical Warning (332012): Synopsys Design Constraints File file not found: 'processador.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
 Info (332144): No user constrained base clocks found in the design
 Info (332130): Timing requirements not specified -- quality metrics such as performance may be sacrificed to reduce compilation time.
-Info (176353): Automatically promoted node dp:datapath|alu:alu1|Mux4~0 
-    Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
 Info (176353): Automatically promoted node rst (placed in PIN N25 (CLK4, LVDSCLK2p, Input))
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock CLKCTRL_G6
     Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
         Info (176357): Destination node ctrl:controller|estado_atual[0]
         Info (176357): Destination node ctrl:controller|estado_atual[1]
-        Info (176357): Destination node ctrl:controller|enable
-        Info (176357): Destination node ctrl:controller|imm[0]
-        Info (176357): Destination node ctrl:controller|imm[1]
-        Info (176357): Destination node ctrl:controller|imm[3]
         Info (176357): Destination node ctrl:controller|OPCODE[1]~0
-        Info (176357): Destination node dp:datapath|alu:alu1|output[0]
-        Info (176357): Destination node dp:datapath|alu:alu1|output[1]
-        Info (176357): Destination node dp:datapath|alu:alu1|output[2]
-        Info (176358): Non-global destination nodes limited to 10 nodes
+        Info (176357): Destination node ctrl:controller|OPCODE[1]~1
 Info (176233): Starting register packing
 Info (176235): Finished register packing
     Extra Info (176219): No registers were packed into other blocks
@@ -1560,11 +1459,11 @@ Info (170137): Fitter placement was successful
 Info (170192): Fitter placement operations ending: elapsed time is 00:00:01
 Info (170193): Fitter routing operations beginning
 Info (170195): Router estimated average interconnect usage is 0% of the available device resources
-    Info (170196): Router estimated peak interconnect usage is 0% of the available device resources in the region that extends from location X0_Y12 to location X10_Y23
+    Info (170196): Router estimated peak interconnect usage is 0% of the available device resources in the region that extends from location X55_Y24 to location X65_Y36
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:01
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
-Info (11888): Total time spent on timing analysis during the Fitter is 0.45 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.33 seconds.
 Info (306004): Started post-fitting delay annotation
 Warning (306006): Found 39 output pins without output pin load capacitance assignment
     Info (306007): Pin "output[0]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
@@ -1611,9 +1510,9 @@ Info (306004): Started post-fitting delay annotation
 Info (306005): Delay annotation completed successfully
 Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:01
 Info (144001): Generated suppressed messages file /home/cicero/Dropbox/CeT 2018.1/Sistemas Digitais/Laboratorio/Terceiro Projeto - Processador/output_files/processador.fit.smsg
-Info: Quartus II 64-Bit Fitter was successful. 0 errors, 6 warnings
-    Info: Peak virtual memory: 727 megabytes
-    Info: Processing ended: Thu Jun 28 15:07:12 2018
+Info: Quartus II 64-Bit Fitter was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 731 megabytes
+    Info: Processing ended: Thu Jun 28 15:49:17 2018
     Info: Elapsed time: 00:00:08
     Info: Total CPU time (on all processors): 00:00:08
 
