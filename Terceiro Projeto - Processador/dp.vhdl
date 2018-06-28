@@ -19,7 +19,7 @@ begin
 	begin
 			if (rst ='1') then
 				output<="0000";
-			else
+			elsif (clk'event and clk='0') then
 				case OPCode is
 					when "0010" =>
 						output <= imm;
@@ -56,8 +56,7 @@ begin
 	begin
 		if (rst = '1') then
 			output <= "0000";
-			temp <= "0000";
-		elsif (clk'event and clk = '1') then
+		elsif (clk'event and clk = '0') then
 				if (enb = '1') then 
 					output <= input;
 					temp <= input;
@@ -97,8 +96,9 @@ begin
 	begin
 	
 	  -- take care of rst state
-	  
-	  if(clk'event and clk = '1')then
+	  if (rst='1') then
+				  output<="0000";
+	  elsif(clk'event and clk = '0')then
 		 if enb = '0' then
 			case (sel) is
 			  when "00" => 
@@ -177,17 +177,41 @@ end component;
 -- maybe we should add the other components here......
 
 signal alu_out: std_logic_vector(3 downto 0);
+signal acu_in: std_logic_vector(3 downto 0):="0000";
+signal acu_out: std_logic_vector(3 downto 0);
+signal reg_out: std_logic_vector(3 downto 0);
+signal dd: std_logic_vector (1 downto 0);
+signal dado: std_logic_vector(3 downto 0):="0000";
+signal enable_reg: std_logic;
 
 -- maybe we should add signals for interconnections here.....
 
 begin
 	alu1: alu port map (rst,clk,imm, opcode, alu_out);
-	acumulador_atual: acc port map (rst,clk,alu_out,enable,output_4);
+	acumulador_atual: acc port map (rst,clk,acu_in,enable,acu_out);
+	registrador : rf port map (rst,clk,dado,dd,enable_reg,reg_out);
 	-- maybe this is were we add the port maps for the other components.....
-
+	output_4<=acu_out;
 	process (rst, clk)
 		begin
-			
+				if(rst='1') then
+						acu_in<="0000";
+				elsif (clk'event and clk='0') then
+					case OPCode is
+						when "0010" =>   --fazer load
+							acu_in<=alu_out;
+						when "0001" =>    --mover do acumulador para um registrador
+							dado<=acu_out;
+							enable_reg<='0';
+							dd <= imm(3 downto 2);
+						when "0000" =>     --Mover de um registrador para o acumulador
+							enable_reg<='1';
+							dado<=reg_out;
+							
+						when others =>
+					
+					end case;
+				end if;
 			-- this you should change so the output actually
 			-- comes from the accumulator so it follows the
 			-- instruction set. since the accumulator is always 

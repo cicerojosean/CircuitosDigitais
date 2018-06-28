@@ -34,14 +34,17 @@ architecture fsm of ctrl is
 
 	-- as you add more code for your algorithms make sure to increase the
 	-- array size. ie. 2 lines of code here, means array size of 0 to 1.
-	type PM_BLOCK is array (0 to 3) of std_logic_vector(7 downto 0);
+	type PM_BLOCK is array (0 to 6) of std_logic_vector(7 downto 0);
 	constant PM : PM_BLOCK := (	
 
 	-- This algorithm loads an immediate value of 3 and then stops
     "00100100",   -- load 4
 	 "00100101",   -- load 5
 	 "00100110",   -- load 6
-	 "10011111"		-- halt
+	 "00100111",   -- load 7
+	 "00101000",   -- load 8
+	 "00101001",   -- load 9	
+	"10011111"		-- halt
     );
   		 
 begin
@@ -61,7 +64,7 @@ begin
 			PC := 0;
 			state <= s0;
 					
-		elsif (clk'event and clk = '1') then		      
+		elsif (clk'event and clk = '0') then		      
       --
       -- steady state
       --    

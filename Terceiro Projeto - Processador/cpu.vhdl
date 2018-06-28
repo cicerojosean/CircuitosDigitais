@@ -93,7 +93,7 @@ begin
 				when "1000" =>
 					hex4 <= "0000000";
 				when "1001" =>
-					hex4 <= "0100000";
+					hex4 <= "0010000";
 				when others =>
 			 end case;
 			 
