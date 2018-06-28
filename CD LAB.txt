@@ -1,0 +1,57 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity contador is
+port(clock: in std_logic;
+	  saida: out std_logic_vector(2 downto 0));
+	  end contador;
+	
+
+architecture contador of contador is
+	
+component ff is
+port(J,K: in std_logic;
+     clock: in std_logic;
+	  Q, Qbar: out std_logic);
+	  end component;
+	  signal QSaida: std_logic_vector(2 downto 0);
+begin
+   FF0: ff port map('0', '0', clock, Qsaida(0));	  
+	FF1: ff port map('0', '0', Qsaida(0), Qsaida(1));	    
+	FF2: ff port map('0', '0', Qsaida(1), Qsaida(2));	
+	saida <=Qsaida;
+	end contador;
+
+
+
+
+FLIP FLOP JK --
+
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity ff is
+port(J,K: in std_logic;
+     clock: in std_logic;
+	  Q, Qbar: out std_logic);
+	  end ff;
+	  
+architecture ffjk of ff is
+signal QSignal: std_logic;
+begin
+
+     process(clock)	  
+	  begin
+	  if (clock'event and clock = '0') then 
+	    if (j='0' and k='0') then
+	       QSignal<= not QSignal;
+	    elsif (j='0' and k='1') then
+	       QSignal<= '1'; 
+	    elsif (j='1' and k='0') then
+	       QSignal<= '0'; 
+	    end if;
+	  end if;
+	 end process;
+	  Q<= QSignal;
+	  QBar<= not Qsignal;
+ end ffjk;	  
