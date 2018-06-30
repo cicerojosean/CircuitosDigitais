@@ -2,12 +2,12 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.std_logic_arith.all;
+use ieee.numeric_std.all;
 
 entity ctrl is
   port ( rst   : in STD_LOGIC;
          start : in STD_LOGIC;
          clk   : in STD_LOGIC; 
-			enable : out std_logic;
          imm   : out std_logic_vector(3 downto 0);
 			estado_atual : out std_logic_vector(3 downto 0)
 			-- you will need to add more ports here as design grows
@@ -34,17 +34,24 @@ architecture fsm of ctrl is
 
 	-- as you add more code for your algorithms make sure to increase the
 	-- array size. ie. 2 lines of code here, means array size of 0 to 1.
-	type PM_BLOCK is array (0 to 6) of std_logic_vector(7 downto 0);
+	type PM_BLOCK is array (0 to 9) of std_logic_vector(7 downto 0);
 	constant PM : PM_BLOCK := (	
 
 	-- This algorithm loads an immediate value of 3 and then stops
-    "00100100",   -- load 4
+    "00100101",   -- load 5
+	 "00010100",   -- salva em r01
+	 "00100011",   -- load 3
+	 "01100100",		-- OR (5 or 3 = 7)
 	 "00100101",   -- load 5
-	 "00100110",   -- load 6
-	 "00100111",   -- load 7
-	 "00101000",   -- load 8
-	 "00101001",   -- load 9	
-	"10011111"		-- halt
+	 "00010100",   -- salva em r01
+	 "00100011",   -- load 3
+	 "01010100",		-- AND (5 and 3 = 1)
+	 "00110100",   -- soma acumulador com r01 (1+5=6)
+ 	 "00100011"   -- load 3
+
+--	 "0100",   -- volta do r01
+--	 "00001000",   -- volta de r02
+--	"10011111"		-- halt
     );
   		 
 begin
@@ -54,9 +61,10 @@ begin
 	-- our otherwise pure FSM
   
 	variable IR : std_logic_vector(7 downto 0);
-	variable OPCODE : std_logic_vector( 3 downto 0);
+	variable OPCODE : std_logic_vector( 3 downto 0):="0000";
 	variable ADDRESS : std_logic_vector (3 downto 0);
 	variable PC : integer;
+	signal endereco : std_logic_vector (3 downto 0);
     
 	begin
 		-- don't forget to take care of rst
@@ -70,7 +78,6 @@ begin
       --    
 				case state is				  
 				  when s0 =>    -- steady state
-					 enable <='0';
 					 PC := 0;
 					 imm <= "0000";
 					 if start = '1' then
@@ -79,24 +86,31 @@ begin
 						state <= s0;
 					 end if;					 
 				  when s1 =>				-- fetch instruction
-					 IR := PM(PC);
-					 OPCODE := IR(7 downto 4);
-					 ADDRESS:= IR(3 downto 0);
-					 state <= s2;					 
-				  when s2 =>				-- increment PC
-					 PC := PC + 1;
-					 case OPCODE is
+							IR := PM(PC);
+							OPCODE := IR(7 downto 4);
+							ADDRESS:= IR(3 downto 0);
+							state <= s2;					 
+									
+					when s2 =>				-- increment PC
+							case OPCODE is
 							when halt =>
 								state <= done;
+							when jmp =>
+								PC:= to_integer(unsigned(ADDRESS));
 							when others =>
+								if PC=9 then
+									PC:=0;
+								else
+								PC := PC + 1;
+								end if;
 								state <= s3;
-					 end case;
+							end case;
 				  when s3 =>                              
 						imm <= address;                   
 						estado_atual <= OPCODE;										
-						state <= s1;
-						enable<='1';
-					 		 
+						state <= s4;
+				  when s4 =>  
+						state <= s1;	 		 
 					
 				  when done =>                            -- stay here forever
 					 estado_atual<="1001";

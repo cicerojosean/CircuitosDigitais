@@ -25,7 +25,6 @@ component ctrl
    port (rst   : in STD_LOGIC;
     	   start : in STD_LOGIC;
          clk   : in STD_LOGIC;
-			enable : out std_logic;
          imm   : out std_logic_vector(3 downto 0);
 			estado_atual : out std_logic_vector(3 downto 0)	
 			-- add ports as required
@@ -36,9 +35,9 @@ component dp
    port 	( 	rst     : in STD_LOGIC;
 				clk     : in STD_LOGIC;
 				imm     : in std_logic_vector(3 downto 0);
-				enable  : in std_logic;
 	  			opcode : in std_logic_vector(3 downto 0);
-				output_4: out STD_LOGIC_VECTOR (3 downto 0)
+				output_4: out STD_LOGIC_VECTOR (3 downto 0);
+				out_opcode:out std_LOGIC_VECTOR(3 downto 0)
           -- add ports as required
         );
 end component;
@@ -46,6 +45,7 @@ end component;
 
 signal immediate : std_logic_vector(3 downto 0);
 signal estado : std_logic_vector(3 downto 0);
+signal estado_dp : std_logic_vector(3 downto 0);
 signal enable : std_logic;
 signal cpu_out : std_logic_vector(3 downto 0);
 
@@ -59,12 +59,13 @@ begin
 -- all results of any alu operation. naturally, this is because of the 
 -- nature of the instruction set.
 
-  controller: ctrl port map(rst, start, clk,enable, immediate,estado);
-  datapath: dp port map(rst, clk, immediate, enable,estado,cpu_out);
+  controller: ctrl port map(rst, start, clk, immediate,estado);
+  datapath: dp port map(rst, clk, immediate,estado,cpu_out,estado_dp);
 
 
   process(rst, clk, cpu_out)
   begin
+		output<=cpu_out;
 		if (rst='1') then
 			hex4 <= "1000000";
 		
@@ -97,7 +98,7 @@ begin
 				when others =>
 			 end case;
 			 
-			 case estado is
+			 case estado_dp is
 				when "0000" =>
 					hex3 <= "1000000";
 					hex2 <= "1000000";

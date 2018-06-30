@@ -2,13 +2,15 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.std_logic_arith.all;
+use ieee.std_logic_unsigned.all;
 
 entity alu is
   port ( rst   : in STD_LOGIC;
          clk   : in STD_LOGIC;
-         imm   : in std_logic_vector(3 downto 0);
-			opcode : in std_logic_vector(3 downto 0);
-         output: out STD_LOGIC_VECTOR (3 downto 0)
+         in1   : in std_logic_vector(3 downto 0):="0000";
+			in2   : in std_logic_vector(3 downto 0):="0000";
+			opcode : in std_logic_vector(3 downto 0):="0000";
+         output: out STD_LOGIC_VECTOR (3 downto 0):="0000"
          -- insert ports as need be
        );
 end alu;
@@ -22,9 +24,15 @@ begin
 			elsif (clk'event and clk='0') then
 				case OPCode is
 					when "0010" =>
-						output <= imm;
-					when "0001" =>
-						
+						output <= in1;
+					when "0011" =>
+						output<=in1+in2;
+					when "0100" =>
+						output<=in1-in2;
+					when "0101" =>
+						output<=in1 and in2;
+					when "0110" =>
+						output<=in1 or in2;
 				when others =>
 				
 				end case;
@@ -43,9 +51,9 @@ use IEEE.std_logic_1164.all;
 entity acc is
   port ( rst   : in STD_LOGIC;
          clk   : in STD_LOGIC;
-         input : in STD_LOGIC_VECTOR (3 downto 0);
+         input : in STD_LOGIC_VECTOR (3 downto 0):="0000";
          enb   : in STD_LOGIC;
-         output: out STD_LOGIC_VECTOR (3 downto 0)
+         output: out STD_LOGIC_VECTOR (3 downto 0):="0000"
        );
 end acc;
 
@@ -56,6 +64,7 @@ begin
 	begin
 		if (rst = '1') then
 			output <= "0000";
+			temp<="0000";
 		elsif (clk'event and clk = '0') then
 				if (enb = '1') then 
 					output <= input;
@@ -90,7 +99,11 @@ entity rf is
 end rf;
 
 architecture bhv of rf is
-signal out0, out1, out2, out3 : std_logic_vector(3 downto 0);
+signal out0 : std_logic_vector(3 downto 0):="1000";
+signal out1: std_logic_vector(3 downto 0):="1001";
+signal out2: std_logic_vector(3 downto 0):="0111";
+signal out3: std_logic_vector(3 downto 0):="0001";
+
 begin
 	process (rst, clk)
 	begin
@@ -135,9 +148,9 @@ entity dp is
   port ( rst     : in STD_LOGIC;
          clk     : in STD_LOGIC;
          imm     : in std_logic_vector(3 downto 0);
-			enable  : in std_logic;
 			opcode : in std_logic_vector(3 downto 0);
-         output_4: out STD_LOGIC_VECTOR (3 downto 0)
+         output_4: out STD_LOGIC_VECTOR (3 downto 0);
+			out_opcode:out std_LOGIC_VECTOR(3 downto 0)
          --add ports as required
        );
 end dp;
@@ -147,7 +160,8 @@ architecture rtl2 of dp is
 component alu is
   port ( rst   : in STD_LOGIC;
          clk   : in STD_LOGIC;
-         imm   : in std_logic_vector(3 downto 0);
+         in1   : in std_logic_vector(3 downto 0);
+			in2   : in std_logic_vector(3 downto 0);
 			opcode : in std_logic_vector(3 downto 0);
          output: out STD_LOGIC_VECTOR (3 downto 0)
          -- add ports as required
@@ -176,38 +190,76 @@ component rf is
 end component;
 -- maybe we should add the other components here......
 
-signal alu_out: std_logic_vector(3 downto 0);
+signal alu_out: std_logic_vector(3 downto 0):="0000";
 signal acu_in: std_logic_vector(3 downto 0):="0000";
-signal acu_out: std_logic_vector(3 downto 0);
-signal reg_out: std_logic_vector(3 downto 0);
-signal dd: std_logic_vector (1 downto 0);
+signal acu_out: std_logic_vector(3 downto 0):="0000";
+signal reg_out: std_logic_vector(3 downto 0):="0000";
+signal dd: std_logic_vector (1 downto 0):="00";
 signal dado: std_logic_vector(3 downto 0):="0000";
-signal enable_reg: std_logic;
-
+signal enable_reg,enable_acu: std_logic:='0';
+signal alu_in1,alu_in2,opcode_sig:std_LOGIC_VECTOR(3 downto 0):="0000";
 -- maybe we should add signals for interconnections here.....
 
 begin
-	alu1: alu port map (rst,clk,imm, opcode, alu_out);
-	acumulador_atual: acc port map (rst,clk,acu_in,enable,acu_out);
+	alu1: alu port map (rst,clk,alu_in1,alu_in2, opcode_sig, alu_out);
+	acumulador_atual: acc port map (rst,clk,acu_in,enable_acu,acu_out);
 	registrador : rf port map (rst,clk,dado,dd,enable_reg,reg_out);
 	-- maybe this is were we add the port maps for the other components.....
-	output_4<=acu_out;
+			output_4<=acu_out;
+	      out_opcode<=opcode_sig;
 	process (rst, clk)
 		begin
+
 				if(rst='1') then
 						acu_in<="0000";
+						alu_in1<="0000";
+						alu_in2<="0000";
+						dado<="0000";
 				elsif (clk'event and clk='0') then
+					opcode_sig<=opcode;
 					case OPCode is
 						when "0010" =>   --fazer load
+							alu_in1<=imm;
+							enable_acu<='1';
 							acu_in<=alu_out;
 						when "0001" =>    --mover do acumulador para um registrador
+							dd <= imm(3 downto 2);
 							dado<=acu_out;
 							enable_reg<='0';
-							dd <= imm(3 downto 2);
 						when "0000" =>     --Mover de um registrador para o acumulador
 							enable_reg<='1';
-							dado<=reg_out;
+							dd <= imm(3 downto 2);
+							acu_in<=reg_out;
 							
+						when "0011" =>    ---ADD
+							dd <= imm(3 downto 2);
+							enable_reg<='1';
+							alu_in1<=acu_out;
+							alu_in2<=reg_out;
+							enable_acu<='1';
+							acu_in<=alu_out;
+						when "0100" =>   --SUB
+							dd <= imm(3 downto 2);
+							enable_reg<='1';
+							alu_in1<=acu_out;
+							alu_in2<=reg_out;
+							enable_acu<='1';
+							acu_in<=alu_out;
+						when "0101" =>      --AND
+							dd <= imm(3 downto 2);
+							enable_reg<='1';
+							alu_in1<=acu_out;
+							alu_in2<=reg_out;
+							enable_acu<='1';
+							acu_in<=alu_out;
+						when "0110" =>      --OR
+							dd <= imm(3 downto 2);
+							enable_reg<='1';
+							alu_in1<=acu_out;
+							alu_in2<=reg_out;
+							enable_acu<='1';
+							acu_in<=alu_out;
+						
 						when others =>
 					
 					end case;
