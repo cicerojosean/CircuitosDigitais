@@ -74,6 +74,7 @@ begin
 			hex6 <= "1000000";
 			hex7 <= "1000000";
 			output<="0000";
+			
 		elsif(clk'event and clk='0') then
 	 		output<=cpu_out;
 			-- this acts like a BCD to 7-segment decoder,
@@ -234,6 +235,8 @@ begin
 					hex7 <= "1111001";
 					hex6 <= "0010010";				
 				when others =>
+					hex7 <= "1111001";
+					hex6 <= "0000010";
 			 end case;
     end if;
   end process;							

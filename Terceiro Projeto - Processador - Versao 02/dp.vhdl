@@ -37,7 +37,10 @@ begin
 						output<=in1 or in2;
 					when "1000"=>
 						output<=not in1;
+					when "1111"=>
+						output<="0001";
 				when others =>
+						
 				end case;
 			end if;
 			end if;
@@ -225,6 +228,9 @@ begin
 						alu_in2<="0000";
 						dado<="0000";
 						output_4<="0000";
+						opcode_sig<="1111";
+						dd<="00";
+						--imm_sig<="0000";
 				elsif (clk'event and clk='0') then
 				if(opcode=opcode_sig ) then
 					if imm=imm_sig then

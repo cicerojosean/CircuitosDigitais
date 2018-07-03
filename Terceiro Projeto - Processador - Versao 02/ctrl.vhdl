@@ -29,7 +29,7 @@ architecture fsm of ctrl is
    constant jmp	   : std_logic_vector(3 downto 0) := "0111";
 	constant inv     : std_logic_vector(3 downto 0) := "1000";
 	constant halt	   : std_logic_vector(3 downto 0) := "1001";
-	constant linhas : integer:=15;
+	constant linhas : integer:=13;
 
 
 	-- as you add more code for your algorithms make sure to increase the
@@ -38,25 +38,25 @@ architecture fsm of ctrl is
 	constant PM : PM_BLOCK := (	
 
 	-- This algorithm loads an immediate value of 3 and then stops
-    "00100101",   -- Load 5 
-	 "00010100",   -- Salva em r01
-	 "00101110",   -- Load 14
-	 "00100011",   -- Load 3
-	 "01100100",		-- Operacao OR (5 or 3 = 7)
-	 "10000000",   -- Operacao Inv acc (0111)=>(1000 = 8)
-	 "00100100",    --Load 4
-	 --"01111000",   -- pula pra linha 9
+    "00100101",   -- 01 - Load 5 
+	 "00010100",   -- 02 - Salva em r01
+	 "00101110",   -- 03 - Load 14
+	 "00100011",   -- 04 - Load 3
+	 "01100100",	-- 05 - Operacao OR (5 or 3 = 7)
+	 "10000000",   -- 06 - Operacao Inv acc (0111)=>(1000 = 8)
+	 "00100100",   -- 07 - Load 4
+	 "01110001",   -- 08 - pula pra linha 1
+	 --"10011111", --0 - Halt
+	 "00100011",   -- 09 - Load 3
+	 --"00100001", --  - Load 1
+	 "00100010",   -- 10 - Load 2
+	 "00100111",   -- 11 - Load 7	
+	 "01010100",	-- 12 - Operacao AND (7 and 3 =5) 
+	 "00101001",   -- 13 - Load 9
 	 --"10011111",   -- Halt
-	 "00100011",   -- Load 3
-	 "00100001",   -- Load 1
-	 "00100010",   -- Load 2
-	 "00100111",   -- Load 7	
-	 "01010100",		-- Operacao AND (7 and 3 =5) 
-	 "00101001",   -- Load 9
-	 --"10011111",   -- Halt
-	 "01010100",	-- -- Operacao AND (9 and 3= 1)
-	 "00100101",   -- Load 5
- 	 "10011111"   -- halt
+	 "01010100"	   -- 14 - Operacao AND (9 and 3= 1)
+	 --"00100101",   -- Load 5
+ 	 --"10011111"   -- halt
 
 --	 "0100",   -- volta do r01
 --	 "00001000",   -- volta de r02
@@ -99,10 +99,10 @@ begin
 							IR := PM(PC);
 							OPCODE := IR(7 downto 4);
 							ADDRESS:= IR(3 downto 0);
-							state <= s2;					 
+							state <= s2;
 									
 					when s2 =>				-- increment PC
-								if PC=linhas then
+								if PC=linhas+1 then
 									PC:=0;
 								else			
 									PC := PC + 1;
@@ -122,7 +122,7 @@ begin
 							when halt =>
 								state <= done;
 							when jmp =>
-								PC:= CONV_INTEGER(unsigned(ADDRESS));
+								PC:= (CONV_INTEGER(unsigned(ADDRESS))-1);
 								state<=s1;
 							when others =>  
 						state <= s1;	 		 
